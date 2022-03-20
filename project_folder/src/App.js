@@ -4,8 +4,12 @@ import PokemonInformation from "./Components/PokemonInformation/PokemonInformati
 function App() {
   const [showList, setShowList] = useState(false);
   const [option, setOption] = useState("list");
+  const [mainData, setMainData] = useState({});
   const showListHandler = () => {
     setShowList(true);
+  };
+  const getMainPokemon = (data) => {
+    console.log(data);
   };
   const defaultView = () => {
     return (
@@ -22,7 +26,11 @@ function App() {
   const previewRender = () => {
     option = "list" ? <PokemonApi /> : <PokemonInformation />;
   };
-  return <div>{!showList ? defaultView() : <PokemonApi />}</div>;
+  return (
+    <div>
+      {!showList ? defaultView() : <PokemonApi mainData={getMainPokemon} />}
+    </div>
+  );
 }
 
 export default App;

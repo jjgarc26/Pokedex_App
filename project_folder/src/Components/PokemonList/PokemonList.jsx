@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PokemonPreview from "../PokemonPreview/PokemonPreview";
 
 //default data for preview
@@ -10,8 +10,17 @@ const defaultPreview = {
 };
 const PokemonList = (props) => {
   const [previewData, setPreviewData] = useState(defaultPreview);
-  const previewHandler = (id, name, image) => {
+  const [stats, setStats] = useState({});
+  useEffect(() => {
+    setStats(props.pokemonData[0]);
+  }, [props]);
+  const previewHandler = (id, name, image, data) => {
     setPreviewData({ id: id, name: name, image: image });
+    setStats(data);
+  };
+  const sendStatsHandler = (data) => {
+    const mainInfo = { ...data };
+    props.fullStats(mainInfo);
   };
   const pokemonList = props.pokemonData.map((pokemon) => {
     return (
@@ -21,7 +30,8 @@ const PokemonList = (props) => {
           previewHandler(
             pokemon.id,
             pokemon.name,
-            pokemon.sprites.other["official-artwork"].front_default
+            pokemon.sprites.other["official-artwork"].front_default,
+            pokemon
           )
         }
       >
@@ -38,6 +48,7 @@ const PokemonList = (props) => {
     <React.Fragment>
       <div>
         <PokemonPreview previewInfo={previewData} />
+        <button onClick={() => sendStatsHandler(stats)}>Load Stats</button>
       </div>
       <div>
         <ul>
