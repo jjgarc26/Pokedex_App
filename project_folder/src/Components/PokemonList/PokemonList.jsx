@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PokemonPreview from "../PokemonPreview/PokemonPreview";
+import Card from "../../UI/Card/Card";
 
 //default data for preview
 const defaultPreview = {
@@ -45,7 +46,7 @@ const PokemonList = (props) => {
   });
 
   return (
-    <React.Fragment>
+    <Card>
       <div>
         <PokemonPreview previewInfo={previewData} />
         <button onClick={() => sendStatsHandler(stats)}>Load Stats</button>
@@ -55,7 +56,7 @@ const PokemonList = (props) => {
           <div>{pokemonList}</div>
         </ul>
       </div>
-    </React.Fragment>
+    </Card>
   );
 };
 export default PokemonList;
