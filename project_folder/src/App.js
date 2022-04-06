@@ -3,6 +3,7 @@ import PokemonApi from "./api/PokemonAPI";
 import PokemonInformation from "./Components/PokemonInformation/PokemonInformation";
 import styles from "./App.module.css";
 import Card from "./UI/Card/Card";
+import mainLogo from "./Images/pokemon_logo.png";
 function App() {
   const [showList, setShowList] = useState(false);
   const [option, setOption] = useState("list");
@@ -16,6 +17,9 @@ function App() {
   const defaultView = () => {
     return (
       <Card>
+        <div className={styles.mainLogo}>
+          <img src={mainLogo} alt="main pokemon logo" />
+        </div>
         <div className={styles.appH2}>
           <h2>Pokedex</h2>
         </div>

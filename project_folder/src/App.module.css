@@ -6,3 +6,17 @@
   margin: auto;
   margin-left: 270px;
 }
+.mainLogo {
+  background-color: black;
+  height: 400px;
+  width: auto;
+  margin-bottom: 10px;
+}
+.mainLogo img {
+  display: block;
+  margin: auto;
+  padding: auto;
+
+  width: 550px;
+  height: 550px;
+}
