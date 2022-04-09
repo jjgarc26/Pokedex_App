@@ -1,22 +1,52 @@
 .appH2 {
+  background-color: purple;
+  height: 300px;
+  margin-top: -83px;
+}
+.appH2 h2 {
   text-align: center;
   font-size: 100px;
-}
-.appButton {
-  margin: auto;
-  margin-left: 270px;
-}
-.mainLogo {
-  background-color: black;
-  height: 400px;
-  width: auto;
   margin-bottom: 10px;
 }
-.mainLogo img {
+.appButton {
+  position: absolute;
+  margin: auto;
+  margin-left: 460px;
+}
+.appButton button {
+  position: relative;
+  font-size: 25px;
+  border-radius: 12px;
+}
+.mainLogo {
+  display: block;
+  position: relative;
+  background-color: black;
+  height: 210px;
+  width: auto;
+  margin-top: 70px;
+}
+.titleImage {
+  top: -176px;
+  left: 275px;
+  position: absolute;
   display: block;
   margin: auto;
-  padding: auto;
+  padding-bottom: 10px;
 
   width: 550px;
   height: 550px;
+}
+@media screen and (max-width: 800px) {
+  .titleImage {
+    left: 0px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .titleImage {
+    left: 50px;
+  }
+  .appButton {
+    margin-left: 230px;
+  }
 }
