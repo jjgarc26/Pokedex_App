@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PokemonPreview from "../PokemonPreview/PokemonPreview";
 import Card from "../../UI/Card/Card";
+import styles from "./PokemonList.module.css";
 
 //default data for preview
 const defaultPreview = {
@@ -26,6 +27,7 @@ const PokemonList = (props) => {
   const pokemonList = props.pokemonData.map((pokemon) => {
     return (
       <li
+        className={styles.items}
         key={pokemon.id}
         onClick={() =>
           previewHandler(
@@ -36,24 +38,24 @@ const PokemonList = (props) => {
           )
         }
       >
-        <div>{pokemon.id}</div>
+        <div className={styles.liId}>{pokemon.id}</div>
+        <div className={styles.liName}>{pokemon.name}</div>
         <div>
           <img src={pokemon.sprites.front_default} alt="pokemon sprite" />
         </div>
-        <div>{pokemon.name}</div>
       </li>
     );
   });
 
   return (
     <Card>
-      <div>
+      <div className={styles.previewContainer}>
         <PokemonPreview previewInfo={previewData} />
         <button onClick={() => sendStatsHandler(stats)}>Load Stats</button>
       </div>
-      <div>
-        <ul>
-          <div>{pokemonList}</div>
+      <div className={styles.listContainer}>
+        <ul className={styles.listUls}>
+          <div className={styles.liContainer}>{pokemonList}</div>
         </ul>
       </div>
     </Card>

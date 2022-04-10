@@ -1,0 +1,52 @@
+.previewContainer {
+  background-color: blue;
+  float: left;
+  margin-top: 50px;
+  height: 500px;
+  width: 500px;
+}
+.listContainer {
+  padding-top: 10px;
+  margin-top: 50px;
+  float: right;
+  background-color: red;
+  height: 800px;
+}
+.listUls {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.liContainer {
+  height: 775px;
+}
+.liId {
+  background-color: green;
+}
+.liName {
+  background-color: yellow;
+}
+@media screen and (max-width: 1000px) {
+  .previewContainer {
+    margin-top: 50px;
+    height: 500px;
+    width: 500px;
+  }
+  .listUls {
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+  .liContainer {
+    height: 775px;
+  }
+  .liId {
+    background-color: green;
+  }
+  .liName {
+    background-color: yellow;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .listContainer {
+    width: 500px;
+  }
+}

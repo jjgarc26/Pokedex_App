@@ -10,7 +10,9 @@ const PokemonAPI = (props) => {
   //fetch pokemon api
   const getData = async () => {
     try {
-      let response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
+      let response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon?limit=${props.limit}`
+      );
       let data = await response.json();
 
       //Parse over api url to get pokemon information

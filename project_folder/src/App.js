@@ -72,7 +72,11 @@ function App() {
   };
   return (
     <div>
-      {!showList ? mainMenu() : <PokemonApi mainData={getMainPokemon} />}
+      {!showList ? (
+        mainMenu()
+      ) : (
+        <PokemonApi mainData={getMainPokemon} limit={state.limit} />
+      )}
     </div>
   );
 }
