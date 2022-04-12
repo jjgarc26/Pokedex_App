@@ -15,13 +15,12 @@
 }
 .listUls {
   padding-left: 0%;
-  background-color: ;
   list-style-type: none;
   overflow: hidden;
   overflow-y: scroll;
 }
 .liContainer {
-  text-align: left;
+  text-align: l;
   height: 775px;
   background-color: palegreen;
 }
