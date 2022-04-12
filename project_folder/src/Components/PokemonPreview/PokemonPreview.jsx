@@ -1,14 +1,16 @@
 import React from "react";
 const PokemonPreview = (props) => {
-  const name = props.previewInfo.name;
-  const id = props.previewInfo.id;
-  const image = props.previewInfo.image;
+  const pokemon = {
+    name: props.previewInfo.name,
+    id: props.previewInfo.id,
+    image: props.previewInfo.image,
+  };
   return (
     <React.Fragment>
-      <div>{name}</div>
-      <div>{id}</div>
+      <div>{pokemon.name}</div>
+      <div>{pokemon.id}</div>
       <div>
-        <img src={image} alt="pokemon artwork" />
+        <img src={pokemon.image} alt="pokemon artwork" />
       </div>
     </React.Fragment>
   );

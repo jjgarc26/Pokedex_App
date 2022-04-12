@@ -11,21 +11,30 @@
   float: right;
   background-color: red;
   height: 800px;
+  width: 20%;
 }
 .listUls {
+  padding-left: 0%;
+  background-color: ;
+  list-style-type: none;
   overflow: hidden;
   overflow-y: scroll;
 }
 .liContainer {
+  text-align: left;
   height: 775px;
+  background-color: palegreen;
 }
 .liId {
+  text-decoration: none;
+  margin-right: 5px;
+  width: 100%;
   background-color: green;
 }
 .liName {
   background-color: yellow;
 }
-@media screen and (max-width: 1000px) {
+/* @media screen and (max-width: 1000px) {
   .previewContainer {
     margin-top: 50px;
     height: 500px;
@@ -50,3 +59,13 @@
     width: 500px;
   }
 }
+@media screen and (min-width: 900px) {
+  .liId {
+    background-color: purple;
+    color: white;
+  }
+  .liName {
+    background-color: blue;
+    color: white;
+  }
+} */
