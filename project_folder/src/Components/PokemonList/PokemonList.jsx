@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PokemonPreview from "../PokemonPreview/PokemonPreview";
 import Card from "../../UI/Card/Card";
 import styles from "./PokemonList.module.css";
+import PokemonFilterList from "./PokemonListFilter";
 
 //default data for preview
 const defaultPreview = {
@@ -13,7 +14,9 @@ const defaultPreview = {
 const PokemonList = (props) => {
   const [previewData, setPreviewData] = useState(defaultPreview);
   const [stats, setStats] = useState({});
+  const [filterList, setFilterList] = useState([]);
   useEffect(() => {
+    setFilterList(props.pokemonData);
     setStats(props.pokemonData[0]);
   }, [props]);
   const previewHandler = (id, name, image, data) => {
@@ -24,7 +27,19 @@ const PokemonList = (props) => {
     const mainInfo = { ...data };
     props.fullStats(mainInfo);
   };
-  const pokemonList = props.pokemonData.map((pokemon) => {
+  const filterListHandler = (criteria) => {
+    if (criteria != "") {
+      const filterPokemonList = props.pokemonData.filter((pokemon) => {
+        if (pokemon.name.includes(criteria)) {
+          return pokemon;
+        }
+      });
+      setFilterList(filterPokemonList);
+    } else {
+      setFilterList(props.pokemonData);
+    }
+  };
+  const pokemonList = filterList.map((pokemon) => {
     return (
       <li
         className={styles.items}
@@ -49,6 +64,7 @@ const PokemonList = (props) => {
 
   return (
     <Card>
+      <PokemonFilterList filterCriteria={filterListHandler} />
       <div className={styles.previewContainer}>
         <PokemonPreview previewInfo={previewData} />
         <button onClick={() => sendStatsHandler(stats)}>Load Stats</button>
