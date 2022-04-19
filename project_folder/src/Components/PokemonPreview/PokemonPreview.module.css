@@ -1,0 +1,16 @@
+.previewMain {
+  background-color: red;
+}
+.previewId {
+  padding-left: 2%;
+  font-size: 30px;
+  background-color: grey;
+}
+.previewImage {
+  background-color: red;
+}
+.previewName {
+  background-color: grey;
+  font-size: 40px;
+  text-align: center;
+}
