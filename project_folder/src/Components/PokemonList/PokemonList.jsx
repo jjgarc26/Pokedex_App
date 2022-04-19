@@ -19,8 +19,12 @@ const PokemonList = (props) => {
     setFilterList(props.pokemonData);
     setStats(props.pokemonData[0]);
   }, [props]);
-  const previewHandler = (id, name, image, data) => {
-    setPreviewData({ id: id, name: name, image: image });
+  const previewHandler = (data) => {
+    setPreviewData({
+      id: data.id,
+      name: data.name,
+      image: data.sprites.other["official-artwork"].front_default,
+    });
     setStats(data);
   };
   const sendStatsHandler = (data) => {
@@ -44,14 +48,7 @@ const PokemonList = (props) => {
       <li
         className={styles.items}
         key={pokemon.id}
-        onClick={() =>
-          previewHandler(
-            pokemon.id,
-            pokemon.name,
-            pokemon.sprites.other["official-artwork"].front_default,
-            pokemon
-          )
-        }
+        onClick={() => previewHandler(pokemon)}
       >
         <div className={styles.liId}>{pokemon.id}</div>
         <div className={styles.liName}>{pokemon.name}</div>
