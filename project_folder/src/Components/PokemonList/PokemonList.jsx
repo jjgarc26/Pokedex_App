@@ -3,6 +3,8 @@ import PokemonPreview from "../PokemonPreview/PokemonPreview";
 import Card from "../../UI/Card/Card";
 import styles from "./PokemonList.module.css";
 import PokemonFilterList from "./PokemonListFilter";
+import PokemonSpeciesAPI from "../../api/PokemonSpeciesAPI";
+import PokemonFullStatus from "../PokemonFullStats/PokemonFullStats";
 
 //default data for preview
 const defaultPreview = {
@@ -14,6 +16,7 @@ const defaultPreview = {
 const PokemonList = (props) => {
   const [previewData, setPreviewData] = useState(defaultPreview);
   const [stats, setStats] = useState({});
+  const [loadStats, setLoadStatus] = useState(false);
   const [filterList, setFilterList] = useState([]);
   useEffect(() => {
     setFilterList(props.pokemonData);
@@ -27,9 +30,8 @@ const PokemonList = (props) => {
     });
     setStats(data);
   };
-  const sendStatsHandler = (data) => {
-    const mainInfo = { ...data };
-    props.fullStats(mainInfo);
+  const loadStatsHandler = () => {
+    setLoadStatus(true);
   };
   const filterListHandler = (criteria) => {
     if (criteria != "") {
@@ -58,19 +60,28 @@ const PokemonList = (props) => {
       </li>
     );
   });
+  const pokemonFullList = () => {
+    return (
+      <div className={styles.listContainer}>
+        <ul className={styles.listUls}>
+          <div className={styles.liContainer}>{pokemonList}</div>
+        </ul>
+      </div>
+    );
+  };
 
   return (
     <Card>
       <PokemonFilterList filterCriteria={filterListHandler} />
       <div className={styles.previewContainer}>
         <PokemonPreview previewInfo={previewData} />
-        <button onClick={() => sendStatsHandler(stats)}>Load Stats</button>
+        <button onClick={() => loadStatsHandler()}>Load Stats</button>
       </div>
-      <div className={styles.listContainer}>
-        <ul className={styles.listUls}>
-          <div className={styles.liContainer}>{pokemonList}</div>
-        </ul>
-      </div>
+      {!loadStats ? (
+        <PokemonSpeciesAPI fullStatus={stats} id={previewData.id} />
+      ) : (
+        pokemonFullList()
+      )}
     </Card>
   );
 };

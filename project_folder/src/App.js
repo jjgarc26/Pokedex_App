@@ -1,6 +1,5 @@
 import React, { useState, useReducer } from "react";
 import PokemonApi from "./api/PokemonAPI";
-import PokemonInformation from "./Components/PokemonInformation/PokemonInformation";
 import styles from "./App.module.css";
 import Card from "./UI/Card/Card";
 import mainLogo from "./Images/pokemon_logo.png";
@@ -20,17 +19,12 @@ const reducer = (state, action) => {
 
 function App() {
   const [showList, setShowList] = useState(false);
-  const [option, setOption] = useState("list");
-  const [mainData, setMainData] = useState({});
   const [state, dispatch] = useReducer(reducer, {
     name: "Kanto",
     limit: "150",
   });
   const showListHandler = () => {
     setShowList(true);
-  };
-  const getMainPokemon = (data) => {
-    console.log(data);
   };
   const setRegionHandler = (event) => {
     dispatch({
@@ -67,17 +61,9 @@ function App() {
       </Card>
     );
   };
-  const previewRender = () => {
-    option = "list" ? <PokemonApi /> : <PokemonInformation />;
-  };
+
   return (
-    <div>
-      {!showList ? (
-        mainMenu()
-      ) : (
-        <PokemonApi mainData={getMainPokemon} limit={state.limit} />
-      )}
-    </div>
+    <div>{!showList ? mainMenu() : <PokemonApi limit={state.limit} />}</div>
   );
 }
 

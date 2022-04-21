@@ -27,13 +27,9 @@ const PokemonAPI = (props) => {
       console.error("Api was not able to be found");
     }
   };
-  const sendData = (data) => {
-    const pokeInformation = { ...data };
-    props.mainData(pokeInformation);
-  };
   return (
     <React.Fragment>
-      <PokemonList pokemonData={data} fullStats={sendData} />
+      <PokemonList pokemonData={data} />
     </React.Fragment>
   );
 };
