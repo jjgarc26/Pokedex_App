@@ -4,7 +4,6 @@ import Card from "../../UI/Card/Card";
 import styles from "./PokemonList.module.css";
 import PokemonFilterList from "./PokemonListFilter";
 import PokemonSpeciesAPI from "../../api/PokemonSpeciesAPI";
-import PokemonFullStatus from "../PokemonFullStats/PokemonFullStats";
 
 //default data for preview
 const defaultPreview = {
@@ -30,11 +29,8 @@ const PokemonList = (props) => {
     });
     setStats(data);
   };
-  const loadStatsHandler = () => {
-    setLoadStatus(true);
-  };
   const filterListHandler = (criteria) => {
-    if (criteria != "") {
+    if (criteria !== "") {
       const filterPokemonList = props.pokemonData.filter((pokemon) => {
         if (pokemon.name.includes(criteria)) {
           return pokemon;
@@ -42,7 +38,7 @@ const PokemonList = (props) => {
       });
       setFilterList(filterPokemonList);
     } else {
-      setFilterList(props.pokemonData);
+      return setFilterList(props.pokemonData);
     }
   };
   const pokemonList = filterList.map((pokemon) => {
@@ -60,7 +56,7 @@ const PokemonList = (props) => {
       </li>
     );
   });
-  const pokemonFullList = () => {
+  const sideList = () => {
     return (
       <div className={styles.listContainer}>
         <ul className={styles.listUls}>
@@ -75,12 +71,12 @@ const PokemonList = (props) => {
       <PokemonFilterList filterCriteria={filterListHandler} />
       <div className={styles.previewContainer}>
         <PokemonPreview previewInfo={previewData} />
-        <button onClick={() => loadStatsHandler()}>Load Stats</button>
+        <button onClick={() => setLoadStatus(true)}>Load Stats</button>
       </div>
       {!loadStats ? (
         <PokemonSpeciesAPI fullStatus={stats} id={previewData.id} />
       ) : (
-        pokemonFullList()
+        sideList()
       )}
     </Card>
   );

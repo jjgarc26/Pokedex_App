@@ -14,14 +14,14 @@ const PokemonSpeciesAPI = (props) => {
       let data = await response.json();
       setApi(data);
     } catch {
-      console.error("Unable to fetch Api");
+      console.error("Unable to fetch Pokemon Species Api");
     }
   };
   console.log(props.fullStatus);
   console.log(api);
   return (
     <div>
-      <PokemonFullStatus />
+      <PokemonFullStatus speciesData={api} />
     </div>
   );
 };
