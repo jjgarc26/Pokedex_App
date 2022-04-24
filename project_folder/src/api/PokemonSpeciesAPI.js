@@ -18,10 +18,9 @@ const PokemonSpeciesAPI = (props) => {
     }
   };
   console.log(props.fullStatus);
-  console.log(api);
   return (
     <div>
-      <PokemonFullStatus speciesData={api} />
+      <PokemonFullStatus speciesData={api} otherApi={props.fullStatus} />
     </div>
   );
 };
