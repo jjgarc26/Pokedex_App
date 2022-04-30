@@ -4,8 +4,6 @@ import "react-tabs/style/react-tabs.css";
 import styles from "./PokemonFullStatus.module.css";
 import PokemonSummary from "./Stats/PokemonSummary/PokemonSummary";
 const PokemonFullStatus = (props) => {
-  // console.log(props.speciesData.flavor_text_entries.get("flavor_text"));
-  console.log(props.otherApi);
   return (
     <div className={styles.mainFullStatus}>
       <Tabs>
@@ -19,7 +17,7 @@ const PokemonFullStatus = (props) => {
         </TabList>
         <TabPanel>
           <h2>Summary</h2>
-          <PokemonSummary />
+          <PokemonSummary summary={props.speciesData} />
         </TabPanel>
         <TabPanel>
           <h2>Basic Information</h2>
