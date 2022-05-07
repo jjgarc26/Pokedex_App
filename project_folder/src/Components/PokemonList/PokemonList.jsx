@@ -4,6 +4,8 @@ import Card from "../../UI/Card/Card";
 import styles from "./PokemonList.module.css";
 import PokemonFilterList from "./PokemonListFilter";
 import PokemonSpeciesAPI from "../../api/PokemonSpeciesAPI";
+import { PokemonSpeciesApi } from "../../api/PokemonSpeciesAPI";
+import PokemonFullStatus from "../PokemonFullStats/PokemonFullStats";
 
 //default data for preview
 const defaultPreview = {
@@ -15,6 +17,7 @@ const defaultPreview = {
 const PokemonList = (props) => {
   const [previewData, setPreviewData] = useState(defaultPreview);
   const [stats, setStats] = useState({});
+  const [speciesApi, setSpeciesApi] = useState({});
   const [loadStats, setLoadStatus] = useState(false);
   const [filterList, setFilterList] = useState([]);
   useEffect(() => {
@@ -65,16 +68,26 @@ const PokemonList = (props) => {
       </div>
     );
   };
+  const loadFullStatsHandler = async () => {
+    try {
+      let data = await PokemonSpeciesApi(previewData.id);
+      console.log(data);
+      setSpeciesApi(data);
+      setLoadStatus(true);
+    } catch {
+      console.error("Could not fetch API");
+    }
+  };
 
   return (
     <Card>
       <PokemonFilterList filterCriteria={filterListHandler} />
       <div className={styles.previewContainer}>
         <PokemonPreview previewInfo={previewData} />
-        <button onClick={() => setLoadStatus(true)}>Load Stats</button>
+        <button onClick={() => loadFullStatsHandler()}>Load Stats</button>
       </div>
-      {!loadStats ? (
-        <PokemonSpeciesAPI fullStatus={stats} id={previewData.id} />
+      {loadStats ? (
+        <PokemonFullStatus firstApi={stats} speciesApi={speciesApi} />
       ) : (
         sideList()
       )}

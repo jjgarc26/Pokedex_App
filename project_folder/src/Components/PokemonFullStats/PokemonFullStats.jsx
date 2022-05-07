@@ -17,7 +17,7 @@ const PokemonFullStatus = (props) => {
         </TabList>
         <TabPanel>
           <h2>Summary</h2>
-          <PokemonSummary summary={props.speciesData} />
+          <PokemonSummary summary={props.speciesApi} />
         </TabPanel>
         <TabPanel>
           <h2>Basic Information</h2>

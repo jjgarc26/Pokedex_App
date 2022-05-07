@@ -1,27 +1,11 @@
-import React, { useEffect, useState } from "react";
-import PokemonFullStatus from "../Components/PokemonFullStats/PokemonFullStats";
-const PokemonSpeciesAPI = (props) => {
-  const [api, setApi] = useState([]);
-  useEffect(() => {
-    fetchApi();
-  }, []);
-
-  const fetchApi = async () => {
-    try {
-      let response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon-species/${props.id}/`
-      );
-      let data = await response.json();
-      setApi(data);
-    } catch {
-      console.error("Unable to fetch Pokemon Species Api");
-    }
-  };
-  console.log(props.fullStatus);
-  return (
-    <div>
-      <PokemonFullStatus speciesData={api} otherApi={props.fullStatus} />
-    </div>
-  );
+export const PokemonSpeciesApi = async (id) => {
+  try {
+    let response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon-species/${id}/`
+    );
+    let data = await response.json();
+    return data;
+  } catch {
+    console.error("Unable to fetch Pokemon Species Api");
+  }
 };
-export default PokemonSpeciesAPI;

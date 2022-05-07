@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 const PokemonSummary = (props) => {
-  const [summary, setSummary] = useState("");
-  // useEffect(() => {
-  //   readApi();
-  // }, []);
+  let [summary, setSummary] = useState("");
+
   const readApi = async () => {
     try {
       let speciesData = await props.summary;
@@ -19,10 +17,6 @@ const PokemonSummary = (props) => {
   readApi();
 
   console.log(props.summary);
-  return (
-    <div>
-      <p>{summary}</p>
-    </div>
-  );
+  return <div>{(summary = "" ? "Loading" : summary)}</div>;
 };
 export default PokemonSummary;
