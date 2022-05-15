@@ -3,6 +3,7 @@ import PokemonApi from "./api/PokemonAPI";
 import styles from "./App.module.css";
 import Card from "./UI/Card/Card";
 import mainLogo from "./Images/pokemon_logo.png";
+import PokemonList from "./Components/PokemonList/PokemonList";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -18,12 +19,14 @@ const reducer = (state, action) => {
 };
 
 function App() {
+  const [apiData, setApiData] = useState([]);
   const [showList, setShowList] = useState(false);
   const [state, dispatch] = useReducer(reducer, {
     name: "Kanto",
     limit: "150",
   });
   const showListHandler = () => {
+    fetchApiHandler();
     setShowList(true);
   };
   const setRegionHandler = (event) => {
@@ -31,6 +34,10 @@ function App() {
       type: event.target.value,
       payload: event.target.value,
     });
+  };
+  const fetchApiHandler = async () => {
+    let data = await PokemonApi(state.limit);
+    setApiData(data);
   };
   const mainMenu = () => {
     return (
@@ -63,7 +70,7 @@ function App() {
   };
 
   return (
-    <div>{!showList ? mainMenu() : <PokemonApi limit={state.limit} />}</div>
+    <div>{!showList ? mainMenu() : <PokemonList pokemonData={apiData} />}</div>
   );
 }
 
