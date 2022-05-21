@@ -87,7 +87,7 @@ const PokemonList = (props) => {
         <button onClick={() => loadFullStatsHandler()}>Load Stats</button>
       </div>
       {loadStats ? (
-        <PokemonFullStatus firstApi={stats} speciesApi={speciesApi} />
+        <PokemonFullStatus basicApi={stats} speciesApi={speciesApi} />
       ) : (
         sideList()
       )}

@@ -5,7 +5,6 @@ import styles from "./PokemonFullStatus.module.css";
 import PokemonBasicInfo from "./Stats/PokemonBasicInfo/PokemonBasicInfo";
 import PokemonSummary from "./Stats/PokemonSummary/PokemonSummary";
 const PokemonFullStatus = (props) => {
-  console.log(props.firstApi);
   return (
     <div className={styles.mainFullStatus}>
       <Tabs>
@@ -23,7 +22,7 @@ const PokemonFullStatus = (props) => {
         </TabPanel>
         <TabPanel>
           <h2>Basic Information</h2>
-          <PokemonBasicInfo />
+          <PokemonBasicInfo basicInfo={props.basicApi} />
         </TabPanel>
         <TabPanel>
           <h2>Stats</h2>
