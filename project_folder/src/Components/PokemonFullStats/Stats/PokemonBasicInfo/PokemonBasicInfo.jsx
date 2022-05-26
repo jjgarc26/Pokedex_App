@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import TabCard from "../../../../UI/TabCard/TabCard";
 const pokemon = {
   name: "",
   id: "",
@@ -38,26 +39,36 @@ const PokemonBasicInfo = (props) => {
   }, []);
 
   return (
-    <div>
+    <TabCard>
       <div>
-        Id: <span>{basicInfo.id}</span>
+        <ul>
+          <li>
+            Id: <span>{basicInfo.id}</span>
+          </li>
+          <li>
+            Name: <span>{basicInfo.name}</span>
+          </li>
+          <li>
+            Types: <span>{basicInfo.types}</span>
+          </li>
+        </ul>
       </div>
       <div>
-        Name: <span>{basicInfo.name}</span>
+        <ul>
+          <li>
+            Height: <span>{basicInfo.height} m</span>
+          </li>
+          <li>
+            {" "}
+            Weight: <span>{basicInfo.weight} kg</span>
+          </li>
+          <li>
+            {" "}
+            Exp Points: <span>{basicInfo.basicExp} xp</span>
+          </li>
+        </ul>
       </div>
-      <div>
-        Types: <span>{basicInfo.types}</span>
-      </div>
-      <div>
-        Height: <span>{basicInfo.height} m</span>
-      </div>
-      <div>
-        Weight: <span>{basicInfo.weight} kg</span>
-      </div>
-      <div>
-        Exp Points: <span>{basicInfo.basicExp} xp</span>
-      </div>
-    </div>
+    </TabCard>
   );
 };
 export default PokemonBasicInfo;

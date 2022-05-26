@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import TabCard from "../../../../UI/TabCard/TabCard";
 
 const PokemonSummary = (props) => {
   let [summary, setSummary] = useState("");
@@ -17,6 +18,6 @@ const PokemonSummary = (props) => {
     readApi();
   }, [summary]);
 
-  return <div>{(summary = "" ? "Loading" : summary)}</div>;
+  return <TabCard>{(summary = "" ? "Loading" : summary)}</TabCard>;
 };
 export default PokemonSummary;
