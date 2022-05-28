@@ -1,0 +1,43 @@
+.leftSection {
+  background-color: aqua;
+  float: left;
+  width: 50%;
+  height: 100px;
+}
+.leftSection ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.leftSection li {
+  width: 100%;
+  background-color: grey;
+  margin-top: 5px;
+}
+.title {
+  float: left;
+  background-color: red;
+  width: 30%;
+  text-align: center;
+  border-radius: 5px;
+}
+.info {
+  background-color: blue;
+  margin-left: 120px;
+  text-align: center;
+  border-radius: 5px;
+}
+.rightSection {
+  background-color: purple;
+  margin-left: 50%;
+  height: 100px;
+}
+.rightSection ul {
+  list-style-type: none;
+  padding-top: 9px;
+  padding-left: 9px;
+}
+.rightSection li {
+  width: 100%;
+  background-color: grey;
+  margin-top: 5px;
+}

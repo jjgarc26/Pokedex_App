@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TabCard from "../../../../UI/TabCard/TabCard";
+import styles from "./PokemonBasicInfo.module.css";
 const pokemon = {
   name: "",
   id: "",
@@ -40,31 +41,35 @@ const PokemonBasicInfo = (props) => {
 
   return (
     <TabCard>
-      <div>
+      <div className={styles.leftSection}>
         <ul>
           <li>
-            Id: <span>{basicInfo.id}</span>
+            <div className={styles.title}>Id:</div>
+            <div className={styles.info}>{basicInfo.id}</div>
           </li>
           <li>
-            Name: <span>{basicInfo.name}</span>
+            <div className={styles.title}>Name:</div>
+            <div className={styles.info}>{basicInfo.name}</div>
           </li>
           <li>
-            Types: <span>{basicInfo.types}</span>
+            <div className={styles.title}>Type:</div>
+            <div className={styles.info}>{basicInfo.types}</div>
           </li>
         </ul>
       </div>
-      <div>
+      <div className={styles.rightSection}>
         <ul>
           <li>
-            Height: <span>{basicInfo.height} m</span>
+            <div className={styles.title}>Height:</div>
+            <div className={styles.info}>{basicInfo.height} M</div>
           </li>
           <li>
-            {" "}
-            Weight: <span>{basicInfo.weight} kg</span>
+            <div className={styles.title}>Weight:</div>
+            <div className={styles.info}>{basicInfo.weight} Kg</div>
           </li>
           <li>
-            {" "}
-            Exp Points: <span>{basicInfo.basicExp} xp</span>
+            <div className={styles.title}>Base Ex:</div>
+            <div className={styles.info}>{basicInfo.basicExp} XP</div>
           </li>
         </ul>
       </div>
