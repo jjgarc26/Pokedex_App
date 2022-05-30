@@ -3,12 +3,12 @@
   float: left;
   margin-top: 20px;
   height: 615px;
-  width: 500px;
+  width: 75%;
 }
 .listContainer {
   padding-top: 10px;
   margin-top: 20px;
-  float: right;
+  margin-left: 80%;
   background-color: red;
   height: 800px;
   width: 20%;

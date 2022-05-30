@@ -9,9 +9,8 @@
   margin-bottom: 10px;
 }
 .appButton {
-  position: absolute;
+  /* position: absolute; */
   margin: auto;
-  margin-left: 460px;
 }
 .appButton button {
   position: relative;

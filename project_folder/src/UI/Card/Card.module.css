@@ -2,8 +2,10 @@
   background-color: white;
   margin: auto;
   width: 75%;
-  height: 1000px;
+  /* height: 1100px; */
+  height: auto;
   border: 3px solid black;
   padding: 10px;
+  padding-bottom: 50px;
   margin-top: 80px;
 }

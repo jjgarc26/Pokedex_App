@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TabCard from "../../../../UI/TabCard/TabCard";
+import styles from "./PokemonSummary.module.css";
 
 const PokemonSummary = (props) => {
   let [summary, setSummary] = useState("");
@@ -18,6 +19,12 @@ const PokemonSummary = (props) => {
     readApi();
   }, [summary]);
 
-  return <TabCard>{(summary = "" ? "Loading" : summary)}</TabCard>;
+  return (
+    <TabCard>
+      <div className={styles.mainSummary}>
+        {(summary = "" ? "Loading" : summary)}
+      </div>
+    </TabCard>
+  );
 };
 export default PokemonSummary;

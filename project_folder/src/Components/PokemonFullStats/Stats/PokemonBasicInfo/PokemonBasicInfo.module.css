@@ -1,12 +1,13 @@
 .leftSection {
-  background-color: aqua;
+  background-color: #00ffff;
   float: left;
   width: 50%;
   height: 100px;
 }
 .leftSection ul {
   list-style-type: none;
-  padding-left: 0px;
+  padding-left: 9px;
+  padding-right: 9px;
 }
 .leftSection li {
   width: 100%;
@@ -33,8 +34,9 @@
 }
 .rightSection ul {
   list-style-type: none;
-  padding-top: 9px;
+  padding-top: 10px;
   padding-left: 9px;
+  padding-right: 9px;
 }
 .rightSection li {
   width: 100%;
