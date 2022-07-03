@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import styles from "./PokemonFullStatus.module.css";
 import PokemonBasicInfo from "./Stats/PokemonBasicInfo/PokemonBasicInfo";
+import PokemonStats from "./Stats/PokemonStats/PokemonStats";
 import PokemonSummary from "./Stats/PokemonSummary/PokemonSummary";
 const PokemonFullStatus = (props) => {
   return (
@@ -26,6 +27,7 @@ const PokemonFullStatus = (props) => {
         </TabPanel>
         <TabPanel>
           <h2>Stats</h2>
+          <PokemonStats></PokemonStats>
         </TabPanel>
         <TabPanel>
           <h2>Attributes</h2>

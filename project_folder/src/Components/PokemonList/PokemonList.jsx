@@ -3,27 +3,22 @@ import PokemonPreview from "../PokemonPreview/PokemonPreview";
 import Card from "../../UI/Card/Card";
 import styles from "./PokemonList.module.css";
 import PokemonFilterList from "./PokemonListFilter";
-import PokemonSpeciesAPI from "../../api/PokemonSpeciesAPI";
+import defaultPreview from "../../DefaultValues/DefaultPreview";
 import { PokemonSpeciesApi } from "../../api/PokemonSpeciesAPI";
 import PokemonFullStatus from "../PokemonFullStats/PokemonFullStats";
 
-//default data for preview
-const defaultPreview = {
-  name: "Bulbasaur",
-  id: 1,
-  image:
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-};
 const PokemonList = (props) => {
   const [previewData, setPreviewData] = useState(defaultPreview);
   const [stats, setStats] = useState({});
   const [speciesApi, setSpeciesApi] = useState({});
   const [loadStats, setLoadStatus] = useState(false);
   const [filterList, setFilterList] = useState([]);
+  
   useEffect(() => {
     setFilterList(props.pokemonData);
     setStats(props.pokemonData[0]);
   }, [props]);
+
   const previewHandler = (data) => {
     setPreviewData({
       id: data.id,
@@ -32,6 +27,7 @@ const PokemonList = (props) => {
     });
     setStats(data);
   };
+  
   const filterListHandler = (criteria) => {
     if (criteria !== "") {
       const filterPokemonList = props.pokemonData.filter((pokemon) => {
@@ -44,6 +40,7 @@ const PokemonList = (props) => {
       return setFilterList(props.pokemonData);
     }
   };
+
   const pokemonList = filterList.map((pokemon) => {
     return (
       <li
@@ -59,6 +56,7 @@ const PokemonList = (props) => {
       </li>
     );
   });
+
   const sideList = () => {
     return (
       <div className={styles.listContainer}>
@@ -68,6 +66,7 @@ const PokemonList = (props) => {
       </div>
     );
   };
+
   const loadFullStatsHandler = async () => {
     try {
       let data = await PokemonSpeciesApi(previewData.id);
