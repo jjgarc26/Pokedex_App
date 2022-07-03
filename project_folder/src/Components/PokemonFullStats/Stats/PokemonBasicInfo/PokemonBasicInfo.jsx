@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from "react";
 import TabCard from "../../../../UI/TabCard/TabCard";
 import styles from "./PokemonBasicInfo.module.css";
-const pokemon = {
-  name: "",
-  id: "",
-  type: "",
-  height: "",
-  weight: "",
-  basicExp: "",
-};
+import defaultBasicInfo from "../../../../DefaultValues/DefaultBasicInfo";
 
 const PokemonBasicInfo = (props) => {
-  const [basicInfo, setBasicInfo] = useState(pokemon);
+  const [basicInfo, setBasicInfo] = useState(defaultBasicInfo);
   useEffect(() => {
     const getInfo = async () => {
       try {
@@ -39,38 +32,33 @@ const PokemonBasicInfo = (props) => {
     getInfo();
   }, []);
 
+  // listItem reduces repetitive lines of code for li
+
+  const listItem = (label, listItem, meteric) => {
+    return (
+      <li>
+        <div className={styles.title}>{label}:</div>
+        <div className={styles.info}>
+          {listItem} {meteric}
+        </div>
+      </li>
+    );
+  };
+
   return (
     <TabCard>
       <div className={styles.leftSection}>
         <ul>
-          <li>
-            <div className={styles.title}>Id:</div>
-            <div className={styles.info}>{basicInfo.id}</div>
-          </li>
-          <li>
-            <div className={styles.title}>Name:</div>
-            <div className={styles.info}>{basicInfo.name}</div>
-          </li>
-          <li>
-            <div className={styles.title}>Type:</div>
-            <div className={styles.info}>{basicInfo.types}</div>
-          </li>
+          {listItem("ID", basicInfo.id)}
+          {listItem("Name", basicInfo.name)}
+          {listItem("Type", basicInfo.types)}
         </ul>
       </div>
       <div className={styles.rightSection}>
         <ul>
-          <li>
-            <div className={styles.title}>Height:</div>
-            <div className={styles.info}>{basicInfo.height} M</div>
-          </li>
-          <li>
-            <div className={styles.title}>Weight:</div>
-            <div className={styles.info}>{basicInfo.weight} Kg</div>
-          </li>
-          <li>
-            <div className={styles.title}>Base Ex:</div>
-            <div className={styles.info}>{basicInfo.basicExp} XP</div>
-          </li>
+          {listItem("Height", basicInfo.height, "M")}
+          {listItem("Weight", basicInfo.weight, "Kg")}
+          {listItem("Base EX", basicInfo.basicExp, "XP")}
         </ul>
       </div>
     </TabCard>
