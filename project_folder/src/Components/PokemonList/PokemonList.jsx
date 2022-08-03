@@ -13,7 +13,7 @@ const PokemonList = (props) => {
   const [speciesApi, setSpeciesApi] = useState({});
   const [loadStats, setLoadStatus] = useState(false);
   const [filterList, setFilterList] = useState([]);
-  
+
   useEffect(() => {
     setFilterList(props.pokemonData);
     setStats(props.pokemonData[0]);
@@ -27,7 +27,6 @@ const PokemonList = (props) => {
     });
     setStats(data);
   };
-  
   const filterListHandler = (criteria) => {
     if (criteria !== "") {
       const filterPokemonList = props.pokemonData.filter((pokemon) => {

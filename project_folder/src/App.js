@@ -2,7 +2,7 @@ import React, { useState, useReducer } from "react";
 import PokemonApi from "./api/PokemonAPI";
 import styles from "./App.module.css";
 import Card from "./UI/Card/Card";
-import mainLogo from "./Images/pokemon_logo.png";
+import mainLogo from "./Images/pokemon_logo_crop.png";
 import PokemonList from "./Components/PokemonList/PokemonList";
 
 const reducer = (state, action) => {

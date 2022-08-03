@@ -14,8 +14,7 @@ const PokemonBasicInfo = (props) => {
           let currentType = type.type.name;
           return currentType.charAt(0).toUpperCase() + currentType.slice(1);
         });
-        console.log("TY: ", types);
-        console.log(types);
+
         const pokemonData = {
           name: api.name.charAt(0).toUpperCase() + api.name.slice(1),
           id: api.id,
@@ -24,11 +23,13 @@ const PokemonBasicInfo = (props) => {
           weight: api.weight / 10,
           basicExp: api.base_experience,
         };
+
         setBasicInfo(pokemonData);
       } catch {
         console.error("Could not find pokemon Basic information");
       }
     };
+
     getInfo();
   }, []);
 
