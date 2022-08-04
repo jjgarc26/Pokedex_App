@@ -20,7 +20,6 @@
   overflow-y: scroll;
 }
 .liContainer {
-  text-align: l;
   height: 775px;
   background-color: palegreen;
 }
@@ -32,6 +31,9 @@
 }
 .liName {
   background-color: yellow;
+}
+.liImage {
+  text-align: center;
 }
 /* @media screen and (max-width: 1000px) {
   .previewContainer {

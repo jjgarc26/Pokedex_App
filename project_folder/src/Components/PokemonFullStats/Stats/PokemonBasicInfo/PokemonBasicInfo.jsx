@@ -1,39 +1,16 @@
 import React, { useState, useEffect } from "react";
 import TabCard from "../../../../UI/TabCard/TabCard";
 import styles from "./PokemonBasicInfo.module.css";
-import defaultBasicInfo from "../../../../DefaultValues/DefaultBasicInfo";
 
 const PokemonBasicInfo = (props) => {
-  const [basicInfo, setBasicInfo] = useState(defaultBasicInfo);
-  useEffect(() => {
-    const getInfo = async () => {
-      try {
-        let api = await props.basicInfo;
-        console.log(api);
-        let types = api.types.map((type) => {
-          let currentType = type.type.name;
-          return currentType.charAt(0).toUpperCase() + currentType.slice(1);
-        });
+  const name =
+    props.basicInfo.name.charAt(0).toUpperCase() +
+    props.basicInfo.name.slice(1);
 
-        const pokemonData = {
-          name: api.name.charAt(0).toUpperCase() + api.name.slice(1),
-          id: api.id,
-          types: types.join(" / "),
-          height: api.height / 10,
-          weight: api.weight / 10,
-          basicExp: api.base_experience,
-        };
-
-        setBasicInfo(pokemonData);
-      } catch {
-        console.error("Could not find pokemon Basic information");
-      }
-    };
-
-    getInfo();
-  }, []);
-
-  // listItem reduces repetitive lines of code for li
+  const type = props.basicInfo.types.map((type) => {
+    let currentType = type.type.name;
+    return currentType.charAt(0).toUpperCase() + currentType.slice(1);
+  });
 
   const listItem = (label, listItem, meteric) => {
     return (
@@ -50,16 +27,16 @@ const PokemonBasicInfo = (props) => {
     <TabCard>
       <div className={styles.leftSection}>
         <ul>
-          {listItem("ID", basicInfo.id)}
-          {listItem("Name", basicInfo.name)}
-          {listItem("Type", basicInfo.types)}
+          {listItem("ID", props.basicInfo.id)}
+          {listItem("Name", name)}
+          {listItem("Types", type.join(" / "))}
         </ul>
       </div>
       <div className={styles.rightSection}>
         <ul>
-          {listItem("Height", basicInfo.height, "M")}
-          {listItem("Weight", basicInfo.weight, "Kg")}
-          {listItem("Base EX", basicInfo.basicExp, "XP")}
+          {listItem("Height", props.basicInfo.height, "M")}
+          {listItem("Weight", props.basicInfo.weight, "Kg")}
+          {listItem("Base EX", props.basicInfo.basicExp, "XP")}
         </ul>
       </div>
     </TabCard>

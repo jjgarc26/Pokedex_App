@@ -49,7 +49,7 @@ const PokemonList = (props) => {
       >
         <div className={styles.liId}>{pokemon.id}</div>
         <div className={styles.liName}>{pokemon.name}</div>
-        <div>
+        <div className={styles.liImage}>
           <img src={pokemon.sprites.front_default} alt="pokemon sprite" />
         </div>
       </li>
