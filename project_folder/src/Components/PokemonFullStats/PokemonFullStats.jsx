@@ -40,7 +40,7 @@ const PokemonFullStatus = (props) => {
         </TabPanel>
         <TabPanel>
           <h2>Stats</h2>
-          <PokemonStats stats={props.basicApi} />
+          <PokemonStats stats={basic} />
         </TabPanel>
         <TabPanel>
           <h2>Attributes</h2>

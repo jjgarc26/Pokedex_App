@@ -1,44 +1,33 @@
 import React, { useEffect, useState } from "react";
 import TabCard from "../../../../UI/TabCard/TabCard";
-import defaultBasicInfo from "../../../../DefaultValues/DefaultBasicInfo";
+import styles from "./PokemonStats.module.css";
 const PokemonStats = (props) => {
-  const [stats, setStats] = useState(defaultBasicInfo);
-
-  useEffect(() => {
-    const getStats = async () => {
-      try {
-        let api = await props.stats;
-        console.log(api.stats);
-        let baseStat = api.stats.map((stat) => {
-          return stat.base_stat;
-        });
-        setStats(baseStat);
-      } catch {}
-    };
-    getStats();
-  }, []);
-
   const listItems = (name, stat) => {
     return (
       <div>
         <li>
-          <div>{name}</div>
-          <div>{stat}</div>
+          <div className={styles.name}>{name}</div>
+          <div className={styles.stat}>{stat}</div>
         </li>
       </div>
     );
   };
   return (
     <TabCard>
-      <div>Pokemon Stats</div>
-      <div>
+      <div className={styles.leftSection}>
         <ul>
-          {listItems("HP", stats[0])}
-          {listItems("Attack", stats[1])}
-          {listItems("Defence", stats[2])}
+          {listItems("HP", props.stats.stats[0].base_stat)}
+          {listItems("Attack", props.stats.stats[1].base_stat)}
+          {listItems("Defence", props.stats.stats[2].base_stat)}
         </ul>
       </div>
-      <div></div>
+      <div className={styles.rightSection}>
+        <ul>
+          {listItems("Speed", props.stats.stats[5].base_stat)}
+          {listItems("Sp-Atk", props.stats.stats[3].base_stat)}
+          {listItems("Sp-Def", props.stats.stats[4].base_stat)}
+        </ul>
+      </div>
     </TabCard>
   );
 };
