@@ -5,19 +5,24 @@ import styles from "./PokemonFullStatus.module.css";
 import PokemonBasicInfo from "./Stats/PokemonBasicInfo/PokemonBasicInfo";
 import PokemonStats from "./Stats/PokemonStats/PokemonStats";
 import PokemonSummary from "./Stats/PokemonSummary/PokemonSummary";
+import PokemonAttributes from "./Stats/PokemonAttributes/PokemonAttributes";
 
 const PokemonFullStatus = (props) => {
   const [basic, setBasic] = useState({});
+  const [species, setSpecies] = useState({});
   useEffect(() => {
     const readApis = async () => {
       try {
         let basicApi = await props.basicApi;
         let speciesApi = await props.speciesApi;
         setBasic(basicApi);
+        setSpecies(speciesApi);
       } catch {}
     };
     readApis();
   }, []);
+  console.log(basic);
+  console.log(species);
 
   return (
     <div className={styles.mainFullStatus}>
@@ -44,6 +49,7 @@ const PokemonFullStatus = (props) => {
         </TabPanel>
         <TabPanel>
           <h2>Attributes</h2>
+          <PokemonAttributes stats={basic} />
         </TabPanel>
         <TabPanel>
           <h2>Moves</h2>

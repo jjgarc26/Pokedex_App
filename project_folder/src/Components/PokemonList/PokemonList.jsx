@@ -69,7 +69,6 @@ const PokemonList = (props) => {
   const loadFullStatsHandler = async () => {
     try {
       let data = await PokemonSpeciesApi(previewData.id);
-      console.log(data);
       setSpeciesApi(data);
       setLoadStatus(true);
     } catch {
