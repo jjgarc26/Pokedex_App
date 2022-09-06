@@ -6,6 +6,7 @@ import PokemonBasicInfo from "./Stats/PokemonBasicInfo/PokemonBasicInfo";
 import PokemonStats from "./Stats/PokemonStats/PokemonStats";
 import PokemonSummary from "./Stats/PokemonSummary/PokemonSummary";
 import PokemonAttributes from "./Stats/PokemonAttributes/PokemonAttributes";
+import PokemonMoves from "./Stats/PokemonMoves/PokemonMoves";
 
 const PokemonFullStatus = (props) => {
   const [basic, setBasic] = useState({});
@@ -53,6 +54,7 @@ const PokemonFullStatus = (props) => {
         </TabPanel>
         <TabPanel>
           <h2>Moves</h2>
+          <PokemonMoves stats={basic} />
         </TabPanel>
         <TabPanel>
           <h2>Locations</h2>
